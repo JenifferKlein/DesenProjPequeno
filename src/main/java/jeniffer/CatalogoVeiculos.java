@@ -39,6 +39,7 @@ public class CatalogoVeiculos {
 
     public static void consultaPorMarca(){
         String marca = "";
+        boolean b;
         Scanner leia = new Scanner(System.in); //objeto que lê as informações dadas pelo usuário 
 
         System.out.println("Digite a marca do carro que deseja consultar:");
@@ -48,15 +49,21 @@ public class CatalogoVeiculos {
             System.out.println("informe uma marca valida:"); 
             marca = leia.nextLine(); 
         }
+        b = false;
         for(int i = 0; i<listaVeiculo.length; i++){
             if((listaVeiculo[i].getMarca()).equalsIgnoreCase(marca)){
                 listaVeiculo[i].exibeDados();
+                b = true;
             }
+        }
+        if(b == false){
+            System.out.println("Marca nao encontrada no catalogo");
         }
     }
     
     public static void consultaPorAno(){
         int ano = 0;
+        boolean b;
         Scanner leia = new Scanner(System.in); //objeto que lê as informações dadas pelo usuário 
 
         System.out.println("Digite o ano que deseja consultar:");
@@ -67,11 +74,16 @@ public class CatalogoVeiculos {
             System.out.println("informe um ano valido:"); 
             ano = leia.nextInt(); 
         }
+        b = false;
         for(int i = 0; i<listaVeiculo.length; i++){
             if((listaVeiculo[i].getAno()) == ano ){
                 listaVeiculo[i].exibeDados();
+                b = true;
             }
         }
+        if(b == false){
+            System.out.println("Nao ha veiculos desse ano cadastrado no nosso catalogo"); 
+        }        
     }
     
     public static void consultaPorTipo(){
@@ -92,7 +104,7 @@ public class CatalogoVeiculos {
         opcao = leia.nextInt(); 
 
         while(opcao < 1 || opcao > 3){
-            System.out.println("informe um ano valido:"); 
+            System.out.println("informe uma opcao valida:"); 
             opcao = leia.nextInt(); 
         }
         if(opcao == 1){
